@@ -1,0 +1,34 @@
+<nav class="navbar navbar-light bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img id="logo" src="../assets/logo.png" width="60" height="25">
+    </a>  
+    <img src="../assets/question.png" width="18" height="18">  
+  </div>
+</nav>
+  
+<div class="row justify-content-center pt-5">
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-11 text-center align-items-center">
+        
+    <form [formGroup]='loginForm'(ngSubmit)="validate(loginForm.value)">        
+      <div class="dot">
+        <img  src="../assets/logo-x.png" width="50" height="50">
+      </div>
+
+      <h1 class="pt-3 h3 mb-3 title">Ingresa a tu tienda</h1>
+
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
+        <label for="floatingInput">Correo electrónico</label>          
+      </div>
+      <br>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" formControlName="password">
+        <label for="floatingPassword">Contraseña</label>          
+      </div>
+      <br>
+      <button class="w-100 btn btn-lg btn-login" type="submit">Ingresar</button>
+    </form>    
+  
+  </div>
+</div>
