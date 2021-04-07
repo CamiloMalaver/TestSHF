@@ -1,31 +1,42 @@
-<nav class="navbar navbar-light bg-white">
-    <div class="container-fluid">        
-        <div class="col-10">
-            <a class="navbar-brand" href="#">
-                <img id="logo" src="../assets/logo.png" width="60" height="25">
-            </a>
-        </div>
-        <div class="col">
-            <img src="../assets/shopping-cart.png" width="20" height="20">
-        </div>
-        <div class="col">
-            <img src="{{userData.picture}}" width="35" height="35" style="border-radius: 50%;">                
-        </div>
-        <div class="col-md-1">
-            <h4 clas="text-center">{{userData.firstName}} {{userData.lastName}}</h4>
-        </div>   
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=""><img id="logo" src="../assets/logo.png" width="60" height="25"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">  
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>  
+            <form class="d-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active"><img src="../assets/shopping-cart.png" width="28" height="30"></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active"><img src="{{userData.picture}}" width="35" height="35" style="border-radius: 50%;"></a>
+                    </li>          
+                    <li class="nav-item">
+                      <a class="nav-link active"><h3 class="text-center align-items-center">{{userData.firstName}} {{userData.lastName}}</h3></a>
+                    </li>
+                </ul> 
+            </form>
+      </div>
     </div>
 </nav>
 
+<!--Saludo & barra de busqueda-->
 <div class="col-lg-6 col-md-8 mx-auto text-center pt-5">
     <h3 class="title">Hola {{userData.firstName}}, ¿Qué te entregamos hoy?</h3>
     <input type="text" class="home-search" placeholder="    Busca productos y tiendas">      
 </div>
 
-<div class="">
-    <div class="row offset-2">
-        <h4 class="title mt-5">Categorías</h4>
-    </div>    
+<div class="container">
+    <!--Cateorias-->
+    <div class="row justify-content-center">
+        <div class="col-8 align-items-left">
+            <h4 class="title mt-5">Categorías</h4>
+        </div>        
+    </div>
     <div class="row justify-content-center">
         <div class="card border-0" style="width: 15rem;" *ngFor="let categoria of categorias">
             <img src="{{categoria.picture}}" class="card-img-top">
@@ -33,7 +44,9 @@
                 <h5 class="card-title text-center">{{categoria.name}}</h5>
             </div>
         </div>
-    </div>   
+    </div>  
+    <!--Tiendas-->   
+
 </div>
 
 
