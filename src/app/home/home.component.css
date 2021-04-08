@@ -24,3 +24,8 @@
     display: flex;
     flex: 1 1 auto;
 }
+
+card-horizontal:hover{
+    border-width: 2px;
+    border-color: teal;
+}

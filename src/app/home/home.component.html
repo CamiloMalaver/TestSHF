@@ -58,6 +58,7 @@
 
 <div class="container">
     <!--Tiendas-->
+    <button id="btnLaunchModal" type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
     <div class="row justify-content-center">
         <div class="col-9">
             <h4 class="title mt-5">Tiendas</h4>
@@ -65,10 +66,10 @@
         <div class="col-xl-9 col-lg-9">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-12 mt-2 text-center" *ngFor="let tienda of tiendas">
-                    <div class="card text-left">
+                    <div class="card text-left" (click) = "launchModal(tienda.name, tienda.rate, tienda.location, tienda.picture, tienda.labels)">
                         <div class="card-horizontal">
                             <div class="mt-4 ms-3">
-                                <img class="" src="{{tienda.picture}}" width="70px" height="60px" style="border-radius: 15px;"  >
+                                <img class="" src="{{tienda.picture}}" width="70px" height="60px" style="border-radius: 15px;">
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title" style="text-align: left;">{{tienda.name}}</h4>
@@ -82,8 +83,7 @@
                                         <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                                     </svg>
                                     {{tienda.rating}}
-                                </p>
-                                <p class="text-secondary" style="text-align: left;">
+                                    <br>
                                     {{tienda.labels}}
                                 </p>
                             </div>
@@ -95,8 +95,9 @@
     </div>
 </div>
 
+<!--Promos-->
 <div class="">
-    <!--Promos-->
+    
     <div class="row offset-2">
         <h4 class="title mt-5">% Promos</h4>
     </div>    
@@ -119,4 +120,42 @@
             </div>
         </div>
     </div>   
+</div>
+
+<!-- Modal Info Tienda-->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img id="modalPic" src="" alt="" width="85px" style="border-radius: 15px;">
+                    </div>                    
+                </div>
+                <div class="row justify-content-center text-center">
+                    <h2 id="modalTitle" class="title"></h2>
+                        <div class="col-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                        <p id="modalLocation"></p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                        <p id="modalRate"></p>
+                        </div>
+                        
+                        <br>
+                        <p id="modalInfo"></p>
+                                       
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #eaeef0; box-shadow: 0px 0px 0px 4px #ebe8e898;">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-success">Comprar</button>
+            </div>
+        </div>
+    </div>
 </div>

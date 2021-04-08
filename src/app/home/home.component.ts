@@ -3,7 +3,7 @@ import {Router} from '@angular/router'
 import {AppComponent} from '../app.component'
 import {HomeServiceService} from '../services/home-service.service'
 import {HttpClient} from '@angular/common/http'
-
+import {DialogModule} from 'primeng/dialog';
 
 @Component({
   selector: 'app-home',
@@ -34,6 +34,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
+  launchModal(name, rate, location, pic, labels){
+    console.log(name);
+    document.getElementById('modalTitle').innerText = name;
+    (document.getElementById('modalPic') as HTMLImageElement).src = pic;
+    document.getElementById('modalLocation').innerText = location;
+    document.getElementById('modalRate').innerText = rate;
+    document.getElementById('modalInfo').innerText = labels;
+    document.getElementById('btnLaunchModal').click();
+  }
 
   async getCategorias(){
     let dir = this.apiUrl + "/api/categories";
